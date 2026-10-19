@@ -1,4 +1,8 @@
-- name: Example Sponsor
+- name: paloalto Networks
   tier: Gold
-  url: https://example.com
-  logo: /assets/img/sponsors/example.png
+  url: https://www.paloaltonetworks.com/
+  logo: /assets/img/sponsors/PANW_Parent_Brand_Primary_Logo_RGB.webp
+- name: splunk
+  tier: Gold
+  url: https://www.splunk.com/
+  logo: /assets/img/sponsors/logo-splunk-acc-rgb-k.webp
