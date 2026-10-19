@@ -52,6 +52,30 @@
     {{ content }}
   </main>
   
+  <aside class="sponsor-rail">
+    <h2 class="rail-title">Our Sponsors</h2>
+    {% if site.data.sponsors.size > 0 %}
+    <ul class="sponsor-list">
+      {% for s in site.data.sponsors %}
+      <li>
+        <a href="{{ s.url }}" target="_blank" rel="noopener">
+          {% if s.logo %}
+          <img src="{{ s.logo | relative_url }}" alt="{{ s.name }} logo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          {% endif %}
+          <span class="sponsor-name" style="display:none;">{{ s.name }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="rail-more">
+      <a href="{{ '/sponsorship-info/' | relative_url }}">Become a sponsor →</a>
+    </p>
+    {% else %}
+    <p class="rail-empty">Support MWCCDC — <a href="{{ '/sponsorship-info/' | relative_url }}">sponsorship info</a></p>
+    {% endif %}
+  </aside>
+  
 	<script>
 		document.getElementById('theme-toggle').addEventListener('click', function () {
 			var html = document.documentElement;
