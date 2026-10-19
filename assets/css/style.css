@@ -1,0 +1,160 @@
+/* ===== Palette: light (default) ===== */
+:root {
+  --bg: #f7f9fc;
+  --bg-panel: #ffffff;
+  --text: #1b2733;
+  --text-muted: #55657a;
+  --blue: #14538c;        /* primary brand blue */
+  --blue-bright: #1f6fc0;
+  --orange: #f07818;      /* primary brand orange */
+  --border: #d8e0ea;
+  --link: var(--blue-bright);
+  --code-bg: #eef3f8;
+}
+
+/* ===== Palette: dark ===== */
+[data-theme="dark"] {
+  --bg: #10161d;
+  --bg-panel: #17202a;
+  --text: #dde6ef;
+  --text-muted: #93a3b5;
+  --blue: #7db3e8;
+  --blue-bright: #8ec2f5;
+  --orange: #ffa94d;
+  --border: #2a3846;
+  --link: var(--blue-bright);
+  --code-bg: #1d2833;
+}
+
+/* Users with OS dark preference and no explicit choice */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) { --bg: #10161d; --bg-panel: #17202a; --text: #dde6ef;
+    --text-muted: #93a3b5; --blue: #7db3e8; --blue-bright: #8ec2f5; --orange: #ffa94d;
+    --border: #2a3846; --code-bg: #1d2833; }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+  border-right: 2px solid var(--orange);
+  padding: 1.25rem 1rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.brand { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.25rem; }
+.logo { height: 44px; width: auto; }
+.brand-text { display: flex; flex-direction: column; }
+.brand-top { font-weight: 700; font-size: 1.05rem; color: var(--blue); }
+.brand-sub {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.7rem;
+  color: var(--orange);
+}
+#theme-toggle {
+  align-self: flex-start;
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  color: var(--text-muted); font-size: 1rem; padding: 0.2rem 0.6rem;
+  cursor: pointer; margin-bottom: 1rem;
+}
+#theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
+
+.sidebar nav ul { list-style: none; margin: 0; padding: 0; }
+.sidebar nav a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.sidebar nav a:hover { background: var(--code-bg); color: var(--blue-bright); }
+.sidebar nav a.active {
+  background: var(--blue);
+  color: #fff;
+  font-weight: 600;
+}
+.sidebar-footer {
+  margin-top: auto;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+/* ===== Main content ===== */
+main { flex: 1; padding: 2.5rem clamp(1rem, 5vw, 4rem); max-width: 60rem; }
+.crumb {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+.content h1 {
+  color: var(--blue);
+  border-bottom: 3px solid var(--orange);
+  padding-bottom: 0.35rem;
+}
+.content h2 { color: var(--blue); margin-top: 2rem; }
+.content a { color: var(--link); }
+.content table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+.content th, .content td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.content th { background: var(--code-bg); color: var(--blue); }
+.content code {
+  font-family: ui-monospace, Consolas, monospace;
+  background: var(--code-bg);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+/* ===== Hero (home page) ===== */
+.hero {
+  background: linear-gradient(135deg, var(--blue) 0%, #0d3a66 100%);
+  color: #fff;
+  border-radius: 10px;
+  border-left: 5px solid var(--orange);
+  padding: 2rem 2.25rem;
+  margin-bottom: 2rem;
+}
+.hero h1 { color: #fff; border: none; margin: 0 0 0.5rem; }
+.hero .tagline {
+  font-family: ui-monospace, Consolas, monospace;
+  color: #ffc37a;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+/* ===== Responsive: sidebar becomes top bar ===== */
+@media (max-width: 820px) {
+  body { flex-direction: column; }
+  .sidebar {
+    width: 100%; height: auto; position: static;
+    border-right: none; border-bottom: 2px solid var(--orange);
+  }
+  .sidebar nav ul {
+    display: flex; flex-wrap: wrap; gap: 0.35rem;
+  }
+  .sidebar nav a { padding: 0.35rem 0.6rem; font-size: 0.85rem; }
+  .sidebar-footer { display: none; }
+  main { padding: 1.5rem 1rem; }
+}

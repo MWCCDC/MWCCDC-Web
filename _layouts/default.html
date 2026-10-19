@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ site.description }}">
+  <script>
+    // Apply saved theme before first paint to avoid flashing
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (!t && window.matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <header class="brand">
+      <!-- TODO: drop your logo file at assets/img/logo.png -->
+      <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="MWCCDC logo" class="logo">
+      <div class="brand-text">
+        <span class="brand-top">Midwest CCDC</span>
+        <span class="brand-sub">$ defend --midwest</span>
+      </div>
+    </header>
+
+    <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+
+    <nav>
+      <ul>
+        {% for item in site.data.navigation %}
+        <li>
+          <a href="{{ item.url | relative_url }}"
+             {% if item.url == '/' and page.url == '/' or item.url != '/' and page.url contains item.url %}class="active"{% endif %}>
+            {{ item.label }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <footer class="sidebar-footer">
+      <p>Hosted by the<br>Collegiate Cyber Defense Competition</p>
+    </footer>
+  </aside>
+
+  <main>
+    {% assign crumbs = page.url | split: '/' %}
+    <p class="crumb"><a href="/">~</a>{% for c in crumbs %}{% if c != '' %} / <a href="/{{ c }}/">{{ c | replace: '-', ' ' | capitalize }}</a>{% endif %}{% endfor %}</p>
+    {{ content }}
+  </main>
+  
+	<script>
+		document.getElementById('theme-toggle').addEventListener('click', function () {
+			var html = document.documentElement;
+			var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+			html.setAttribute('data-theme', next);
+			localStorage.setItem('theme', next);
+		});
+	</script>
+</body>
+</html>

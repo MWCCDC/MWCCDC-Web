@@ -1,0 +1,20 @@
+- label: Home
+  url: /
+- label: Registration
+  url: /registration/
+- label: Rules
+  url: /rules/
+- label: MWCCDC Results
+  url: /results/
+- label: Our Sponsors
+  url: /sponsors/
+- label: Sponsorship Info
+  url: /sponsorship-info/
+- label: Volunteer Info
+  url: /volunteer-info/
+- label: MWCCDC Contacts
+  url: /contacts/
+- label: Location & Lodging
+  url: /location-lodging/
+- label: FAQ
+  url: /faq/

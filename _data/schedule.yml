@@ -1,0 +1,23 @@
+season: "2027"
+
+events:
+  - date: 2026-10-24
+    name: Invitational
+  - date: 2026-11-07
+    name: Invitational
+  - date: 2026-11-14
+    name: Invitational
+  - date: 2027-01-30
+    name: IN/MN Qualifier
+  - date: 2027-02-06
+    name: OH/MI/KY/IA/WI Qualifier
+  - date: 2027-02-13
+    name: IL/MO Qualifier
+  - date: 2027-02-20
+    name: Wildcard Qualifier
+  - date: 2027-03-19
+    name: MWCCDC Regional (Day 1)
+  - date: 2027-03-20
+    name: MWCCDC Regional (Day 2)
+  - date: 2027-04-01
+    name: National CCDC

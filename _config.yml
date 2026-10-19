@@ -1,0 +1,19 @@
+title: Midwest CCDC
+description: >-
+  The Midwest Regional Collegiate Cyber Defense Competition (MWCCDC) —
+  collegiate teams build and defend mock business infrastructures against
+  professional red teams.
+url: "https://mw.ccdc.events"
+baseurl: ""
+
+permalink: pretty
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - CONTRIBUTING.md
+  - README.md
+  - .github/

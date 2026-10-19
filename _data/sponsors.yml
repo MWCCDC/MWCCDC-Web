@@ -1,0 +1,4 @@
+- name: Example Sponsor
+  tier: Gold
+  url: https://example.com
+  logo: /assets/img/sponsors/example.png
