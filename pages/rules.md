@@ -18,4 +18,4 @@ Throughout these rules, the following terms are used:
  * Team Co-Captain – a student member of the Blue Team identified as the secondary or backup liaison between the Blue Team and the White Team, should the Team Captain be unavailable (i.e. not in the competition room).
  * Team representatives – a faculty or staff representative of the Blue Team’s host institution responsible for serving as a liaison between competition officials and the Blue Team’s institution.
 
-[Rules Document](assets/docs/CCDC-Rules.pdf)
+[Rules Document](/assets/docs/CCDC-Rules.pdf)
