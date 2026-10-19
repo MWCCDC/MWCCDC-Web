@@ -19,3 +19,7 @@ events:
     name: MWCCDC Regional (Day 1)
   - date: 2027-03-20
     name: MWCCDC Regional (Day 2)
+  - date: 2027-05-07
+    name: CCDC Nationals (Day 1)
+  - date: 2027-05-08
+    name: CCDC Nationals (Day 2)
