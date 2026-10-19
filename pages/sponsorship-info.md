@@ -47,6 +47,9 @@ Bronze Sponsor $500+
 ## Sponsorship Contact Information
 
 Ginny Swyndroski
+
 Business Office and Hospitality
+
 swyndroskiv@morainevalley.edu
+
 708.974.5725
