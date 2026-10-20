@@ -1,8 +1,8 @@
 - name: paloalto Networks
-  tier: Gold
+  tier: National
   url: https://www.paloaltonetworks.com/
   logo: /assets/img/sponsors/PANW_Parent_Brand_Primary_Logo_RGB.webp
 - name: splunk
-  tier: Gold
+  tier: National
   url: https://www.splunk.com/
   logo: /assets/img/sponsors/logo-splunk-acc-rgb-k.webp
