@@ -47,6 +47,7 @@ body {
   margin: 0;
   display: flex;
   min-height: 100vh;
+  flex-wrap: wrap;
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -55,8 +56,8 @@ body {
 
 /* ===== Sidebar ===== */
 .sidebar {
-  width: 260px;
-  flex-shrink: 0;
+  width: clamp(210px, 18vw, 260px);
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   background: var(--bg-panel);
@@ -115,6 +116,11 @@ main { flex: 1; padding: 2.5rem clamp(1rem, 5vw, 4rem); max-width: 60rem; }
   color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
+.content {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 .content h1 {
   color: var(--blue);
   border-bottom: 3px solid var(--orange);
@@ -170,8 +176,8 @@ main { flex: 1; padding: 2.5rem clamp(1rem, 5vw, 4rem); max-width: 60rem; }
 
 /* ===== Right sponsor rail ===== */
 .sponsor-rail {
-  width: 220px;
-  flex-shrink: 0;
+  width: clamp(170px, 15vw, 230px);
+  flex: 0 0 auto;
   background: var(--bg-panel);
   border-left: 1px solid var(--border);
   border-right: 3px solid var(--orange);
@@ -206,7 +212,13 @@ main { flex: 1; padding: 2.5rem clamp(1rem, 5vw, 4rem); max-width: 60rem; }
 .rail-empty { font-size: 0.8rem; color: var(--text-muted); }
 
 /* Adjust center column for the added rail */
-main { max-width: 52rem; }
+main {
+  flex: 1 1 0;
+  min-width: 0;              /* allows it to shrink below content size */
+  max-width: none;           /* <- was 52rem, this caused the cramping */
+  padding: 2.5rem clamp(1rem, 4vw, 4rem);
+  margin: 0 auto;            /* centers content within whatever space it gets */
+}
 
 @media (max-width: 1080px) {
   /* Hide the dedicated rail, show sponsors as a footer band instead */
