@@ -18,5 +18,7 @@
   url: /location-lodging/
 - label: FAQ
   url: /faq/
+- label: National CCDC
+  url: https://www.ccdc.io
 - label: CCDC Discord
   url: https://discord.gg/ccdc
