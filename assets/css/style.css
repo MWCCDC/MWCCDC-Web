@@ -12,6 +12,15 @@
   --code-bg: #eef3f8;
 }
 
+/* Universal link styling — overrides browser-default purple visited links */
+a,
+a:visited {
+  color: var(--link);
+}
+a:hover {
+  color: var(--orange);
+}
+
 /* ===== Palette: dark ===== */
 [data-theme="dark"] {
   --bg: #10161d;
