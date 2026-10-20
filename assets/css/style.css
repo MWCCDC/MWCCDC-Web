@@ -1,3 +1,9 @@
+/* ============================================================
+   MWCCDC Website — styles.css
+   Light-first theme with dark mode toggle.
+   Orange/blue palette. Cyber accents in monospace elements.
+   ============================================================ */
+
 /* ===== Palette: light (default) ===== */
 :root {
   --bg: #f7f9fc;
@@ -12,16 +18,7 @@
   --code-bg: #eef3f8;
 }
 
-/* Universal link styling — overrides browser-default purple visited links */
-a,
-a:visited {
-  color: var(--link);
-}
-a:hover {
-  color: var(--orange);
-}
-
-/* ===== Palette: dark ===== */
+/* ===== Palette: dark (explicit toggle) ===== */
 [data-theme="dark"] {
   --bg: #10161d;
   --bg-panel: #17202a;
@@ -37,12 +34,36 @@ a:hover {
 
 /* Users with OS dark preference and no explicit choice */
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme]) { --bg: #10161d; --bg-panel: #17202a; --text: #dde6ef;
-    --text-muted: #93a3b5; --blue: #7db3e8; --blue-bright: #8ec2f5; --orange: #ffa94d;
-    --border: #2a3846; --code-bg: #1d2833; }
+  html:not([data-theme]) {
+    --bg: #10161d;
+    --bg-panel: #17202a;
+    --text: #dde6ef;
+    --text-muted: #93a3b5;
+    --blue: #7db3e8;
+    --blue-bright: #8ec2f5;
+    --orange: #ffa94d;
+    --border: #2a3846;
+    --code-bg: #1d2833;
+  }
 }
 
+/* ===== Universal link styling =====
+   Overrides browser-default purple visited links everywhere.
+   Higher-specificity rules below still win where they apply. */
+a,
+a:visited {
+  color: var(--link);
+}
+a:hover {
+  color: var(--orange);
+}
+
+/* ============================================================
+   Layout: fluid three columns
+   Left nav rail + center content + right sponsor rail.
+   ============================================================ */
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   display: flex;
@@ -54,7 +75,7 @@ body {
   line-height: 1.6;
 }
 
-/* ===== Sidebar ===== */
+/* ===== Left navigation sidebar ===== */
 .sidebar {
   width: clamp(210px, 18vw, 260px);
   flex: 0 0 auto;
@@ -68,8 +89,18 @@ body {
   height: 100vh;
   overflow-y: auto;
 }
-.brand { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.25rem; }
-.logo { height: 44px; width: auto; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+.logo {
+  height: 44px;
+  width: auto;
+  max-width: 140px;   /* keeps wide lockups inside the sidebar */
+}
 .brand-text { display: flex; flex-direction: column; }
 .brand-top { font-weight: 700; font-size: 1.05rem; color: var(--blue); }
 .brand-sub {
@@ -77,11 +108,17 @@ body {
   font-size: 0.7rem;
   color: var(--orange);
 }
+
 #theme-toggle {
   align-self: flex-start;
-  background: none; border: 1px solid var(--border); border-radius: 6px;
-  color: var(--text-muted); font-size: 1rem; padding: 0.2rem 0.6rem;
-  cursor: pointer; margin-bottom: 1rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 #theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
 
@@ -100,78 +137,13 @@ body {
   color: #fff;
   font-weight: 600;
 }
+
 .sidebar-footer {
   margin-top: auto;
   font-size: 0.78rem;
   color: var(--text-muted);
   border-top: 1px solid var(--border);
   padding-top: 0.75rem;
-}
-
-/* ===== Main content ===== */
-main { flex: 1; padding: 2.5rem clamp(1rem, 5vw, 4rem); max-width: 60rem; }
-.crumb {
-  font-family: ui-monospace, Consolas, monospace;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-.content {
-  max-width: 56rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-.content h1 {
-  color: var(--blue);
-  border-bottom: 3px solid var(--orange);
-  padding-bottom: 0.35rem;
-}
-.content h2 { color: var(--blue); margin-top: 2rem; }
-.content a { color: var(--link); }
-.content table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-.content th, .content td {
-  border: 1px solid var(--border);
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-}
-.content th { background: var(--code-bg); color: var(--blue); }
-.content code {
-  font-family: ui-monospace, Consolas, monospace;
-  background: var(--code-bg);
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
-}
-
-/* ===== Hero (home page) ===== */
-.hero {
-  background: linear-gradient(135deg, var(--blue) 0%, #0d3a66 100%);
-  color: #fff;
-  border-radius: 10px;
-  border-left: 5px solid var(--orange);
-  padding: 2rem 2.25rem;
-  margin-bottom: 2rem;
-}
-.hero h1 { color: #fff; border: none; margin: 0 0 0.5rem; }
-.hero .tagline {
-  font-family: ui-monospace, Consolas, monospace;
-  color: #ffc37a;
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-}
-
-/* ===== Responsive: sidebar becomes top bar ===== */
-@media (max-width: 820px) {
-  body { flex-direction: column; }
-  .sidebar {
-    width: 100%; height: auto; position: static;
-    border-right: none; border-bottom: 2px solid var(--orange);
-  }
-  .sidebar nav ul {
-    display: flex; flex-wrap: wrap; gap: 0.35rem;
-  }
-  .sidebar nav a { padding: 0.35rem 0.6rem; font-size: 0.85rem; }
-  .sidebar-footer { display: none; }
-  main { padding: 1.5rem 1rem; }
 }
 
 /* ===== Right sponsor rail ===== */
@@ -211,29 +183,135 @@ main { flex: 1; padding: 2.5rem clamp(1rem, 5vw, 4rem); max-width: 60rem; }
 .rail-more { font-size: 0.78rem; margin-top: 1.5rem; }
 .rail-empty { font-size: 0.8rem; color: var(--text-muted); }
 
-/* Adjust center column for the added rail */
+/* ===== Schedule list in the rail ===== */
+.rail-schedule-title { margin-top: 2rem; }
+.rail-schedule {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.82rem;
+}
+.rail-schedule li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted var(--border);
+}
+.rail-schedule li:last-child { border-bottom: none; }
+.rail-date {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--orange);
+  flex-shrink: 0;
+  min-width: 3.4em;     /* aligns event names in a tidy column */
+}
+.rail-event { color: var(--text); }
+/* Past events fade; future ones stay prominent */
+.rail-schedule li.past { opacity: 0.45; }
+
+/* ===== Main content column =====
+   Takes all remaining space between the rails (no max-width cap —
+   the .content wrapper handles readability instead). */
 main {
   flex: 1 1 0;
-  min-width: 0;              /* allows it to shrink below content size */
-  max-width: none;           /* <- was 52rem, this caused the cramping */
+  min-width: 0;            /* allows shrinking below content size */
+  max-width: none;
   padding: 2.5rem clamp(1rem, 4vw, 4rem);
-  margin: 0 auto;            /* centers content within whatever space it gets */
+  margin: 0 auto;
 }
 
-@media (max-width: 1080px) {
-  /* Hide the dedicated rail, show sponsors as a footer band instead */
-  .sponsor-rail {
-    position: static;
-    height: auto;
+/* Inner measure so text lines stay readable on ultrawide screens */
+.content {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.crumb {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.content h1 {
+  color: var(--blue);
+  border-bottom: 3px solid var(--orange);
+  padding-bottom: 0.35rem;
+}
+.content h2 { color: var(--blue); margin-top: 2rem; }
+.content a,
+.content a:visited { color: var(--link); }
+
+.content table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+.content th, .content td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.content th { background: var(--code-bg); color: var(--blue); }
+
+.content code {
+  font-family: ui-monospace, Consolas, monospace;
+  background: var(--code-bg);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+/* ===== Hero (home page) ===== */
+.hero {
+  background: linear-gradient(135deg, var(--blue) 0%, #0d3a66 100%);
+  color: #fff;
+  border-radius: 10px;
+  border-left: 5px solid var(--orange);
+  padding: 2rem 2.25rem;
+  margin-bottom: 2rem;
+}
+.hero h1 { color: #fff; border: none; margin: 0 0 0.5rem; }
+.hero .tagline {
+  font-family: ui-monospace, Consolas, monospace;
+  color: #ffc37a;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   Responsive tiers
+   1) <= 1150px: sponsor rail docks to a bottom band, nav becomes
+      a wrapped top bar
+   2) <=  560px: phone refinements
+   ============================================================ */
+
+/* ===== Narrow desktop / tablet ===== */
+@media (max-width: 1150px) {
+  body { flex-direction: column; }
+
+  .sidebar {
     width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 2px solid var(--orange);
+  }
+  .sidebar nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .sidebar nav a { padding: 0.35rem 0.6rem; font-size: 0.85rem; }
+  .sidebar-footer { display: none; }
+
+  main { flex: 1; padding: 1.5rem 1rem; }
+
+  .sponsor-rail {
+    width: 100%;
+    height: auto;
+    position: static;
     border-left: none;
     border-right: none;
     border-top: 3px solid var(--orange);
   }
-  body { flex-wrap: wrap; }
-  main { order: 1; flex: 1 1 320px; }
-  .sidebar { order: 0; }
-  .sponsor-rail { order: 2; }
   .sponsor-list {
     display: flex;
     flex-wrap: wrap;
@@ -242,4 +320,20 @@ main {
   }
   .sponsor-list li { margin-bottom: 0; }
   .sponsor-list img { max-height: 54px; }
+  .rail-more { margin-top: 0.75rem; }
+
+  /* Schedule renders as a compact two-column layout in the band */
+  .rail-schedule {
+    columns: 2;
+    column-gap: 2rem;
+  }
+  .rail-schedule li { break-inside: avoid; }
+}
+
+/* ===== Phones ===== */
+@media (max-width: 560px) {
+  main { padding: 1.25rem 0.75rem; }
+  .crumb { font-size: 0.7rem; }
+  .hero { padding: 1.25rem 1rem; }
+  .content table { display: block; overflow-x: auto; }
 }
