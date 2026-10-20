@@ -74,6 +74,18 @@
     {% else %}
     <p class="rail-empty">Support MWCCDC — <a href="{{ '/sponsorship-info/' | relative_url }}">sponsorship info</a></p>
     {% endif %}
+	
+	<h2 class="rail-title rail-schedule-title">
+    {{ site.data.schedule.season }} Schedule
+  </h2>
+  <ul class="rail-schedule">
+    {% for event in site.data.schedule.events %}
+    <li class="{% if event.date < site.time %}past{% endif %}">
+      <span class="rail-date">{{ event.date | date: "%b %-d" }}</span>
+      <span class="rail-event">{{ event.name }}</span>
+    </li>
+    {% endfor %}
+  </ul>
   </aside>
   
 	<script>
