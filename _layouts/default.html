@@ -79,13 +79,15 @@
     {{ site.data.schedule.season }} Schedule
   </h2>
   <ul class="rail-schedule">
-    {% for event in site.data.schedule.events %}
-    <li class="{% if event.date < site.time %}past{% endif %}">
+  {% assign now_ts = site.time | date: '%s' | plus: 0 %}
+  {% for event in site.data.schedule.events %}
+    {% assign event_ts = event.date | date: '%s' | plus: 0 %}
+    <li class="{% if event_ts < now_ts %}past{% endif %}">
       <span class="rail-date">{{ event.date | date: "%b %-d" }}</span>
       <span class="rail-event">{{ event.name }}</span>
     </li>
-    {% endfor %}
-  </ul>
+  {% endfor %}
+</ul>
   </aside>
   
 	<script>
